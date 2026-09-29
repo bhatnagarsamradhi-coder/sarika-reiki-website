@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sarika Bhatnagar | Reiki & Wellness</title>
+<style>
+:root{
+  --purple:#5d3b73;
+  --purple-dark:#3e2750;
+  --gold:#c69b45;
+  --cream:#fffaf4;
+  --white:#fff;
+  --text:#332b35;
+  --muted:#756b78;
+  --border:#eadfe9;
+  --shadow:0 12px 35px rgba(67,43,78,.12);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:Georgia,"Times New Roman",serif;
+  color:var(--text);
+  background:var(--cream);
+  line-height:1.6;
+}
+button,input,textarea,select{font:inherit}
+a{text-decoration:none;color:inherit}
+.container{width:min(1120px,92%);margin:auto}
+header{
+  position:sticky;top:0;z-index:1000;
+  background:rgba(255,250,244,.96);
+  border-bottom:1px solid var(--border);
+  backdrop-filter:blur(10px);
+}
+.header-inner{
+  min-height:82px;display:flex;align-items:center;
+  justify-content:space-between;gap:20px;
+}
+.logo{display:flex;align-items:center}
+.header-logo{width:190px;max-height:68px;object-fit:contain}
+nav{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+nav a{font-size:14px;color:var(--purple-dark)}
+nav a:hover{color:var(--gold)}
+.nav-button,.button{
+  display:inline-flex;align-items:center;justify-content:center;
+  border:0;border-radius:999px;padding:11px 18px;
+  cursor:pointer;background:var(--purple);color:#fff;
+  transition:.2s;
+}
+.nav-button:hover,.button:hover{background:var(--purple-dark);transform:translateY(-1px)}
+.button.gold{background:var(--gold);color:#fff}
+.button.outline-button{
+  background:transparent;color:var(--purple);
+  border:1px solid var(--purple);
+}
+.menu-button{display:none;background:none;border:0;font-size:28px;color:var(--purple);cursor:pointer}
+
+.hero{
+  padding:90px 0 80px;
+  background:
+    radial-gradient(circle at 80% 20%,rgba(198,155,69,.18),transparent 28%),
+    radial-gradient(circle at 20% 30%,rgba(93,59,115,.12),transparent 30%),
+    var(--cream);
+}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center}
+.eyebrow{color:var(--gold);font-weight:bold;letter-spacing:2px;text-transform:uppercase;font-size:13px}
+.hero h1{font-size:clamp(42px,6vw,72px);line-height:1.05;color:var(--purple-dark);margin:15px 0}
+.hero p{font-size:18px;color:var(--muted);max-width:650px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.hero-card{
+  background:#fff;border:1px solid var(--border);border-radius:28px;
+  padding:22px;box-shadow:var(--shadow);
+}
+.hero-card img{width:100%;height:360px;object-fit:contain;border-radius:20px;background:#faf4fb}
+.placeholder-photo{
+  min-height:230px;border-radius:18px;
+  background:linear-gradient(135deg,#f2e9f5,#fff8eb);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--muted);padding:20px;text-align:center;
+}
+section{padding:80px 0}
+.section-head{text-align:center;max-width:760px;margin:0 auto 40px}
+.section-head h2{font-size:38px;color:var(--purple-dark);margin-bottom:10px}
+.section-head p{color:var(--muted)}
+.about-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:45px;align-items:center}
+.about-photo img{width:100%;height:430px;object-fit:cover;border-radius:26px;box-shadow:var(--shadow)}
+.about-text h3{font-size:30px;color:var(--purple);margin-bottom:14px}
+.about-text p{color:var(--muted);margin-bottom:15px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{
+  background:#fff;border:1px solid var(--border);border-radius:22px;
+  overflow:hidden;box-shadow:var(--shadow);
+}
+.card-photo{width:100%;height:210px;object-fit:cover;background:#f5edf7}
+.card-body{padding:22px}
+.card h3{color:var(--purple);margin-bottom:7px;font-size:22px}
+.card p{color:var(--muted);font-size:15px}
+.price{color:var(--gold);font-weight:bold;margin:12px 0}
+.card-actions{margin-top:16px}
+.empty-state{
+  padding:35px;text-align:center;border:1px dashed #d8c9dc;
+  border-radius:20px;color:var(--muted);background:#fff;
+}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.gallery-grid img{width:100%;height:250px;object-fit:cover;border-radius:20px}
+.appointment-wrap{max-width:850px;margin:auto;background:#fff;padding:32px;border-radius:26px;box-shadow:var(--shadow);border:1px solid var(--border)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field{display:flex;flex-direction:column;gap:7px}
+.field.full{grid-column:1/-1}
+.field label{font-size:14px;color:var(--purple);font-weight:bold}
+.field input,.field textarea,.field select{
+  width:100%;padding:12px 14px;border:1px solid var(--border);
+  border-radius:12px;outline:none;background:#fff;
+}
+.field textarea{min-height:120px;resize:vertical}
+.contact-box{
+  background:linear-gradient(135deg,var(--purple),#7b568f);
+  color:#fff;border-radius:28px;padding:40px;text-align:center;
+}
+.contact-box h2{font-size:36px;margin-bottom:12px}
+.contact-info{display:flex;justify-content:center;gap:25px;flex-wrap:wrap;margin:22px 0}
+.contact-info div{padding:10px 16px;background:rgba(255,255,255,.12);border-radius:999px}
+footer{padding:30px 0;text-align:center;color:var(--muted);border-top:1px solid var(--border)}
+
+.modal-overlay{
+  display:none;position:fixed;inset:0;background:rgba(30,20,35,.65);
+  z-index:2000;padding:20px;overflow:auto;
+}
+.modal-overlay.show{display:flex;align-items:center;justify-content:center}
+.modal{
+  width:min(900px,100%);background:#fff;border-radius:24px;
+  padding:28px;position:relative;max-height:92vh;overflow:auto;
+}
+.modal.small{width:min(440px,100%)}
+.close-button{
+  position:absolute;right:16px;top:12px;border:0;background:none;
+  font-size:28px;color:var(--muted);cursor:pointer;
+}
+.modal h2{color:var(--purple-dark);margin-bottom:5px}
+.modal-subtitle{color:var(--muted);margin-bottom:22px}
+.dashboard-header{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:20px;margin-bottom:25px;padding-top:10px;
+}
+.dashboard-header>div{flex:1}
+.dashboard-header h2{margin:0 0 8px;line-height:1.3}
+.dashboard-header .modal-subtitle{margin:0}
+.dashboard-back-button{
+  flex-shrink:0;position:relative;z-index:10;white-space:nowrap;
+  min-height:42px;padding:10px 16px;line-height:1.2;
+}
+.dashboard-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.admin-box{
+  border:1px solid var(--border);border-radius:18px;padding:20px;background:#fff;
+}
+.admin-box h3{color:var(--purple);margin-bottom:14px}
+.admin-box.full{grid-column:1/-1}
+.admin-form{display:grid;gap:10px}
+.admin-form input,.admin-form textarea{
+  width:100%;padding:11px;border:1px solid var(--border);border-radius:10px;
+}
+.admin-form textarea{min-height:100px;resize:vertical}
+.file-input{padding:9px!important;background:#faf7fb}
+.admin-list{display:grid;gap:10px;margin-top:15px}
+.admin-item{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:12px;padding:12px;border:1px solid var(--border);border-radius:12px;
+}
+.admin-item img{width:60px;height:60px;object-fit:cover;border-radius:9px}
+.admin-item-main{display:flex;align-items:center;gap:12px;min-width:0}
+.admin-item-main div:last-child{min-width:0}
+.admin-item-title{font-weight:bold;color:var(--purple);overflow-wrap:anywhere}
+.delete-btn{
+  border:1px solid #d9b5b5;background:#fff;color:#a44a4a;
+  padding:7px 10px;border-radius:8px;cursor:pointer;flex-shrink:0;
+}
+.hint{font-size:12px;color:var(--muted)}
+.login-error{color:#a44a4a;font-size:13px;display:none}
+
+@media(max-width:900px){
+  nav{display:none}
+  nav.open{display:flex;position:absolute;top:82px;left:0;right:0;background:var(--cream);padding:20px;flex-direction:column;align-items:flex-start;border-bottom:1px solid var(--border)}
+  .menu-button{display:block}
+  .hero-grid,.about-grid{grid-template-columns:1fr}
+  .cards{grid-template-columns:1fr 1fr}
+  .gallery-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:650px){
+  section{padding:60px 0}
+  .header-logo{width:150px}
+  .hero{padding:65px 0}
+  .cards,.gallery-grid,.form-grid,.dashboard-grid{grid-template-columns:1fr}
+  .field.full{grid-column:auto}
+  .hero-card img{height:280px}
+  .about-photo img{height:330px}
+  .dashboard-header{flex-direction:column;align-items:stretch;gap:15px}
+  .dashboard-back-button{align-self:flex-start}
+  .admin-box.full{grid-column:auto}
+}
+
+.enquiry-card .card-body{text-align:center}
+.enquiry-icon{font-size:38px;margin-bottom:8px}
+.enquiry-card .button.disabled{
+  opacity:.55;cursor:not-allowed;pointer-events:none;
+}
+
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container header-inner">
+    <a href="#home" class="logo">
+      <img src="logo.png" alt="Sarika Bhatnagar Reiki & Wellness" class="header-logo">
+    </a>
+    <button class="menu-button" onclick="toggleMenu()" aria-label="Open menu">☰</button>
+    <nav id="navbar">
+      <a href="#home" onclick="closeMenu()">Home</a>
+      <a href="#about" onclick="closeMenu()">About</a>
+      <a href="#teach" onclick="closeMenu()">What I Teach</a>
+      <a href="#classes" onclick="closeMenu()">Classes</a>
+      <a href="#gallery" onclick="closeMenu()">Gallery</a>
+      <a href="#appointment" onclick="closeMenu()">Appointment</a>
+      <a href="#shop" onclick="closeMenu()">Shop</a>
+      <a href="#enquiry" onclick="closeMenu()">Enquiry</a>
+      <a href="#contact" onclick="closeMenu()">Contact</a>
+      <button class="nav-button" onclick="openLogin()">Owner Login</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section id="home" class="hero">
+  <div class="container hero-grid">
+    <div>
+      <div class="eyebrow">Reiki • Healing • Wellness</div>
+      <h1>Mann Reiki Healing Center.</h1>
+      <p>
+        Explore Reiki, wellness sessions, classes and selected products
+        with Sarika Bhatnagar. Information about services and offerings can
+        be updated directly by the owner.
+      </p>
+      <div class="hero-actions">
+        <a class="button gold" href="#appointment">Book an Appointment</a>
+        <a class="button outline-button" href="#classes">View Classes</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <img src="logo.png" alt="Sarika Bhatnagar Reiki & Wellness">
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <div class="section-head">
+      <h2>About Sarika</h2>
+      <p>A space for wellness information, sessions and learning.</p>
+    </div>
+    <div class="about-grid">
+      <div class="about-photo" id="aboutPhotoBox"></div>
+      <div class="about-text">
+        <h3 id="aboutTitle">Sarika Bhatnagar</h3>
+        <p id="aboutText">About information will be added by Sarika from the Owner Dashboard.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="teach">
+  <div class="container">
+    <div class="section-head">
+      <h2>What I Teach</h2>
+      <p>These items are managed by Sarika from the Owner Dashboard.</p>
+    </div>
+    <div id="teachList" class="cards"></div>
+  </div>
+</section>
+
+<section id="classes">
+  <div class="container">
+    <div class="section-head">
+      <h2>Classes & Courses</h2>
+      <p>Current classes can be added and updated by Sarika.</p>
+    </div>
+    <div id="classesList" class="cards"></div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="container">
+    <div class="section-head">
+      <h2>Gallery</h2>
+      <p>Photos can be added by Sarika from the Owner Dashboard.</p>
+    </div>
+    <div id="galleryList" class="gallery-grid"></div>
+  </div>
+</section>
+
+<section id="appointment">
+  <div class="container">
+    <div class="section-head">
+      <h2>Book an Appointment</h2>
+      <p>Submit your details and the request will open in WhatsApp.</p>
+    </div>
+    <div class="appointment-wrap">
+      <form id="appointmentForm" class="form-grid">
+        <div class="field">
+          <label>Full Name *</label>
+          <input id="appName" required>
+        </div>
+        <div class="field">
+          <label>Phone / WhatsApp *</label>
+          <input id="appPhone" required>
+        </div>
+        <div class="field">
+          <label>Email</label>
+          <input id="appEmail" type="email">
+        </div>
+        <div class="field">
+          <label>Service *</label>
+          <select id="appService" required>
+            <option value="">Select a service</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Preferred Date *</label>
+          <input id="appDate" type="date" required>
+        </div>
+        <div class="field">
+          <label>Preferred Time *</label>
+          <input id="appTime" type="time" required>
+        </div>
+        <div class="field full">
+          <label>Message</label>
+          <textarea id="appMessage" placeholder="Any additional information"></textarea>
+        </div>
+        <div class="field full">
+          <button class="button gold" type="submit">Send Appointment Request on WhatsApp</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section id="shop">
+  <div class="container">
+    <div class="section-head">
+      <h2>Shop</h2>
+      <p>Products will be displayed here when Sarika adds them.</p>
+    </div>
+    <div id="productsList" class="cards"></div>
+  </div>
+</section>
+
+
+<section id="enquiry">
+  <div class="container">
+    <div class="section-head">
+      <h2>Enquiry</h2>
+      <p>Join the WhatsApp group related to your enquiry.</p>
+    </div>
+    <div id="enquiryList" class="cards"></div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="contact-box">
+      <h2>Contact</h2>
+      <p>For appointments, classes or product enquiries, contact Sarika directly.</p>
+      <div class="contact-info">
+        <div>WhatsApp: +91 95848 71309</div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container">© <span id="year"></span> Sarika Bhatnagar • Reiki & Wellness</div>
+</footer>
+
+<!-- LOGIN -->
+<div id="loginOverlay" class="modal-overlay">
+  <div class="modal small">
+    <button class="close-button" onclick="closeLogin()">×</button>
+    <h2>Owner Login</h2>
+    <p class="modal-subtitle">Manage the website content.</p>
+    <form id="loginForm" class="admin-form">
+      <input id="loginUser" type="email" placeholder="Owner email address" required>
+      <input id="loginPass" type="password" placeholder="Password" required>
+      <div id="loginError" class="login-error">Incorrect username or password.</div>
+      <button class="button" type="submit">Login</button>
+      <div class="hint">Use the Firebase owner email and password you created.</div>
+    </form>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashboardOverlay" class="modal-overlay">
+  <div class="modal">
+    <button class="close-button" onclick="closeDashboard()">×</button>
+
+    <div class="dashboard-header">
+      <div>
+        <h2>Owner Dashboard</h2>
+        <p class="modal-subtitle">Manage website information, photos, classes and products. Changes are saved to Firebase.</p>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end;align-items:center">
+        <button class="button outline-button dashboard-back-button" type="button" onclick="closeDashboard()">
+          ← Back to Website
+        </button>
+        <button class="button" type="button" onclick="logoutOwner()">Logout</button>
+      </div>
+    </div>
+
+    <div class="dashboard-grid">
+
+      <div class="admin-box full">
+        <h3>About Me</h3>
+        <form id="aboutForm" class="admin-form">
+          <input id="aboutTitleInput" placeholder="Title">
+          <textarea id="aboutTextInput" placeholder="About information"></textarea>
+          <label>About Photo</label>
+          <input id="aboutPhotoInput" class="file-input" type="file" accept="image/*">
+          <button class="button" type="submit">Save About</button>
+        </form>
+      </div>
+
+      <div class="admin-box full">
+        <h3>What I Teach</h3>
+        <form id="teachForm" class="admin-form">
+          <input id="teachName" placeholder="Teaching / service name" required>
+          <textarea id="teachDescription" placeholder="Description"></textarea>
+          <label>Photo</label>
+          <input id="teachPhoto" class="file-input" type="file" accept="image/*">
+          <button class="button" type="submit">Add Teaching Item</button>
+        </form>
+        <div id="teachAdminList" class="admin-list"></div>
+      </div>
+
+      <div class="admin-box full">
+        <h3>Classes & Courses</h3>
+        <form id="classForm" class="admin-form">
+          <input id="className" placeholder="Class / course name" required>
+          <textarea id="classDescription" placeholder="Class description"></textarea>
+          <input id="classPrice" placeholder="Price (optional)">
+          <label>Class Photo</label>
+          <input id="classPhoto" class="file-input" type="file" accept="image/*">
+          <button class="button" type="submit">Add Class</button>
+        </form>
+        <div id="classAdminList" class="admin-list"></div>
+      </div>
+
+      <div class="admin-box full">
+        <h3>Products</h3>
+        <form id="productForm" class="admin-form">
+          <input id="productName" placeholder="Product name" required>
+          <textarea id="productDescription" placeholder="Product description"></textarea>
+          <input id="productPrice" placeholder="Price (optional)">
+          <label>Product Photo</label>
+          <input id="productPhoto" class="file-input" type="file" accept="image/*">
+          <button class="button" type="submit">Add Product</button>
+        </form>
+        <div id="productAdminList" class="admin-list"></div>
+      </div>
+
+
+      <div class="admin-box full">
+        <h3>Enquiry / WhatsApp Groups</h3>
+        <p class="hint" style="margin-bottom:12px;">
+          Paste the WhatsApp invitation link for each group. These links will appear on the public Enquiry section.
+        </p>
+        <form id="enquiryForm" class="admin-form">
+          <input id="shopGroupLink" type="url" placeholder="Shop & Products WhatsApp group link">
+          <input id="reikiGroupLink" type="url" placeholder="Reiki Classes WhatsApp group link">
+          <input id="wellnessGroupLink" type="url" placeholder="Healing & Wellness WhatsApp group link">
+          <button class="button" type="submit">Save Enquiry Group Links</button>
+        </form>
+        <div class="hint" style="margin-top:10px;">
+          Example: https://chat.whatsapp.com/...
+        </div>
+      </div>
+
+      <div class="admin-box full">
+        <h3>Gallery</h3>
+        <form id="galleryForm" class="admin-form">
+          <label>Gallery Photo</label>
+          <input id="galleryPhoto" class="file-input" type="file" accept="image/*" required>
+          <button class="button" type="submit">Add Gallery Photo</button>
+        </form>
+        <div id="galleryAdminList" class="admin-list"></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script>
+const firebaseConfig = {
+ apiKey: "AIzaSyCmuJ2e6qMJaCq_Bye1NOr1l0FdaFr4xfU",
+  authDomain: "sarika-reiki-website.firebaseapp.com",
+  projectId: "sarika-reiki-website",
+  storageBucket: "sarika-reiki-website.firebasestorage.app",
+  messagingSenderId: "140653169458",
+  appId: "1:140653169458:web:9fdb24afefd90cc621252b",
+  measurementId: "G-8GXDE2RF3F"
+};
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+const db = firebase.firestore();
+
+const STORAGE_KEY = "sarika_reiki_site_v2";
+const whatsappNumber = "919584871309";
+
+const defaultData = {
+  aboutTitle: "Sarika Bhatnagar",
+  aboutText: "About information will be added by Sarika from the Owner Dashboard.",
+  aboutPhoto: "",
+  teach: [],
+  classes: [],
+  products: [],
+  gallery: [],
+  enquiry: {
+    shopLink: "",
+    reikiLink: "",
+    wellnessLink: ""
+  }
+};
+
+async function getData(){
+  try{
+    const snap = await db.collection("website").doc("content").get();
+    if(snap.exists){
+      const saved = snap.data() || {};
+      return {
+        ...defaultData,
+        ...saved,
+        teach: Array.isArray(saved.teach) ? saved.teach : [],
+        classes: Array.isArray(saved.classes) ? saved.classes : [],
+        products: Array.isArray(saved.products) ? saved.products : [],
+        gallery: Array.isArray(saved.gallery) ? saved.gallery : [],
+        enquiry: {
+          ...defaultData.enquiry,
+          ...(saved.enquiry || {})
+        }
+      };
+    }
+
+    // One-time migration of any data already stored in the old browser prototype.
+    const localSaved = JSON.parse(localStorage.getItem(STORAGE_KEY));
+    if(localSaved){
+      const migrated = {
+        ...defaultData,
+        ...localSaved,
+        teach: Array.isArray(localSaved.teach) ? localSaved.teach : [],
+        classes: Array.isArray(localSaved.classes) ? localSaved.classes : [],
+        products: Array.isArray(localSaved.products) ? localSaved.products : [],
+        gallery: Array.isArray(localSaved.gallery) ? localSaved.gallery : [],
+        enquiry: {
+          ...defaultData.enquiry,
+          ...(localSaved.enquiry || {})
+        }
+      };
+      await db.collection("website").doc("content").set(migrated);
+      return migrated;
+    }
+
+    return structuredClone(defaultData);
+  }catch(e){
+    console.error("Firestore read failed:", e);
+    try{
+      const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
+      if(saved){
+        return {
+          ...defaultData, ...saved,
+          teach: Array.isArray(saved.teach) ? saved.teach : [],
+          classes: Array.isArray(saved.classes) ? saved.classes : [],
+          products: Array.isArray(saved.products) ? saved.products : [],
+          gallery: Array.isArray(saved.gallery) ? saved.gallery : [],
+          enquiry: {
+            ...defaultData.enquiry,
+            ...(saved.enquiry || {})
+          }
+        };
+      }
+    }catch(_){}
+    return structuredClone(defaultData);
+  }
+}
+
+async function saveData(data){
+  try{
+    await db.collection("website").doc("content").set(data);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    return true;
+  }catch(e){
+    console.error("Firestore save failed:", e);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    alert("The website saved on this device, but Firebase could not save it online. Please check your Firebase connection/rules.");
+    return false;
+  }
+}
+
+function escapeHTML(value){
+  return String(value ?? "").replace(/[&<>"']/g, ch => ({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
+  }[ch]));
+}
+
+function readImage(file, maxSize=900){
+  return new Promise((resolve,reject)=>{
+    if(!file){ resolve(""); return; }
+    const reader = new FileReader();
+    reader.onload = e => {
+      const img = new Image();
+      img.onload = () => {
+        let w = img.width, h = img.height;
+        if(w > maxSize || h > maxSize){
+          const scale = Math.min(maxSize/w, maxSize/h);
+          w = Math.round(w*scale);
+          h = Math.round(h*scale);
+        }
+        const canvas = document.createElement("canvas");
+        canvas.width=w; canvas.height=h;
+        const ctx=canvas.getContext("2d");
+        ctx.drawImage(img,0,0,w,h);
+        resolve(canvas.toDataURL("image/jpeg",.82));
+      };
+      img.onerror=reject;
+      img.src=e.target.result;
+    };
+    reader.onerror=reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+async function renderAll(){
+  const data=await getData();
+
+  document.getElementById("aboutTitle").textContent=data.aboutTitle || "Sarika Bhatnagar";
+  document.getElementById("aboutText").textContent=data.aboutText || "";
+
+  const aboutPhoto=document.getElementById("aboutPhotoBox");
+  aboutPhoto.innerHTML=data.aboutPhoto
+    ? `<img src="${data.aboutPhoto}" alt="About Sarika">`
+    : `<div class="placeholder-photo">About photo will be added by Sarika.</div>`;
+
+  renderTeach(data);
+  renderClasses(data);
+  renderProducts(data);
+  renderEnquiry(data);
+  renderGallery(data);
+  renderAdminLists(data);
+  updateServiceOptions(data);
+}
+
+function renderTeach(data){
+  const box=document.getElementById("teachList");
+  if(!data.teach.length){
+    box.innerHTML=`<div class="empty-state" style="grid-column:1/-1">Teaching information will appear here when Sarika adds it.</div>`;
+    return;
+  }
+  box.innerHTML=data.teach.map(item=>`
+    <article class="card">
+      ${item.photo
+        ? `<img class="card-photo" src="${item.photo}" alt="${escapeHTML(item.name)}">`
+        : `<div class="placeholder-photo">Photo coming soon</div>`}
+      <div class="card-body">
+        <h3>${escapeHTML(item.name)}</h3>
+        <p>${escapeHTML(item.description)}</p>
+      </div>
+    </article>
+  `).join("");
+}
+
+function renderClasses(data){
+  const box=document.getElementById("classesList");
+  if(!data.classes.length){
+    box.innerHTML=`<div class="empty-state" style="grid-column:1/-1">Classes and courses will appear here when Sarika adds them.</div>`;
+    return;
+  }
+  box.innerHTML=data.classes.map(item=>`
+    <article class="card">
+      ${item.photo
+        ? `<img class="card-photo" src="${item.photo}" alt="${escapeHTML(item.name)}">`
+        : `<div class="placeholder-photo">Photo coming soon</div>`}
+      <div class="card-body">
+        <h3>${escapeHTML(item.name)}</h3>
+        <p>${escapeHTML(item.description)}</p>
+        ${item.price ? `<div class="price">${escapeHTML(item.price)}</div>` : ""}
+        <div class="card-actions">
+          <a class="button" href="#appointment">Enquire / Book</a>
+        </div>
+      </div>
+    </article>
+  `).join("");
+}
+
+function renderProducts(data){
+  const box=document.getElementById("productsList");
+  if(!data.products.length){
+    box.innerHTML=`<div class="empty-state" style="grid-column:1/-1">Products coming soon. Sarika can add products from the Owner Dashboard.</div>`;
+    return;
+  }
+  box.innerHTML=data.products.map(item=>`
+    <article class="card">
+      ${item.photo
+        ? `<img class="card-photo" src="${item.photo}" alt="${escapeHTML(item.name)}">`
+        : `<div class="placeholder-photo">Photo coming soon</div>`}
+      <div class="card-body">
+        <h3>${escapeHTML(item.name)}</h3>
+        <p>${escapeHTML(item.description)}</p>
+        ${item.price ? `<div class="price">${escapeHTML(item.price)}</div>` : ""}
+        <!-- Product enquiries are handled through the Shop & Products WhatsApp group in the Enquiry section. -->
+      </div>
+    </article>
+  `).join("");
+}
+
+
+function renderEnquiry(data){
+  const box=document.getElementById("enquiryList");
+  const groups=[
+    {
+      icon:"💎",
+      name:"Shop & Products",
+      description:"Ask about crystals, stones, availability, prices and orders.",
+      link:data.enquiry?.shopLink || ""
+    },
+    {
+      icon:"🌿",
+      name:"Reiki Classes",
+      description:"Ask about Reiki classes, courses, timings and learning.",
+      link:data.enquiry?.reikiLink || ""
+    },
+    {
+      icon:"✨",
+      name:"Healing & Wellness",
+      description:"Ask about healing sessions and wellness services.",
+      link:data.enquiry?.wellnessLink || ""
+    }
+  ];
+
+  box.innerHTML=groups.map(group=>`
+    <article class="card enquiry-card">
+      <div class="card-body">
+        <div class="enquiry-icon">${group.icon}</div>
+        <h3>${escapeHTML(group.name)}</h3>
+        <p>${escapeHTML(group.description)}</p>
+        <div class="card-actions">
+          ${group.link
+            ? `<a class="button" href="${escapeHTML(group.link)}" target="_blank" rel="noopener">Join WhatsApp Group</a>`
+            : `<span class="button disabled">Link Coming Soon</span>`}
+        </div>
+      </div>
+    </article>
+  `).join("");
+}
+
+function renderGallery(data){
+  const box=document.getElementById("galleryList");
+  if(!data.gallery.length){
+    box.innerHTML=`<div class="empty-state" style="grid-column:1/-1">Gallery photos will appear here when Sarika adds them.</div>`;
+    return;
+  }
+  box.innerHTML=data.gallery.map((item,i)=>`
+    <img src="${item.photo}" alt="Gallery photo ${i+1}">
+  `).join("");
+}
+
+function renderAdminLists(data){
+  const teach=document.getElementById("teachAdminList");
+  teach.innerHTML=data.teach.length ? data.teach.map((item,i)=>`
+    <div class="admin-item">
+      <div class="admin-item-main">
+        ${item.photo ? `<img src="${item.photo}" alt="">` : ""}
+        <div><div class="admin-item-title">${escapeHTML(item.name)}</div><div class="hint">${escapeHTML(item.description)}</div></div>
+      </div>
+      <button class="delete-btn" onclick="deleteTeach(${i})">Delete</button>
+    </div>
+  `).join("") : `<div class="hint">No teaching items added yet.</div>`;
+
+  const cls=document.getElementById("classAdminList");
+  cls.innerHTML=data.classes.length ? data.classes.map((item,i)=>`
+    <div class="admin-item">
+      <div class="admin-item-main">
+        ${item.photo ? `<img src="${item.photo}" alt="">` : ""}
+        <div><div class="admin-item-title">${escapeHTML(item.name)}</div><div class="hint">${escapeHTML(item.price || "")}</div></div>
+      </div>
+      <button class="delete-btn" onclick="deleteClass(${i})">Delete</button>
+    </div>
+  `).join("") : `<div class="hint">No classes added yet.</div>`;
+
+  const prod=document.getElementById("productAdminList");
+  prod.innerHTML=data.products.length ? data.products.map((item,i)=>`
+    <div class="admin-item">
+      <div class="admin-item-main">
+        ${item.photo ? `<img src="${item.photo}" alt="">` : ""}
+        <div><div class="admin-item-title">${escapeHTML(item.name)}</div><div class="hint">${escapeHTML(item.price || "")}</div></div>
+      </div>
+      <button class="delete-btn" onclick="deleteProduct(${i})">Delete</button>
+    </div>
+  `).join("") : `<div class="hint">No products added yet.</div>`;
+
+  const gal=document.getElementById("galleryAdminList");
+  gal.innerHTML=data.gallery.length ? data.gallery.map((item,i)=>`
+    <div class="admin-item">
+      <div class="admin-item-main"><img src="${item.photo}" alt=""><div class="admin-item-title">Gallery photo ${i+1}</div></div>
+      <button class="delete-btn" onclick="deleteGallery(${i})">Delete</button>
+    </div>
+  `).join("") : `<div class="hint">No gallery photos added yet.</div>`;
+}
+
+function updateServiceOptions(data){
+  const select=document.getElementById("appService");
+  const current=select.value;
+  const options=[
+    ...data.teach.map(x=>x.name),
+    ...data.classes.map(x=>x.name)
+  ];
+  select.innerHTML=`<option value="">Select a service</option>`+
+    options.map(x=>`<option value="${escapeHTML(x)}">${escapeHTML(x)}</option>`).join("");
+  if(options.includes(current)) select.value=current;
+}
+
+function openLogin(){
+  document.getElementById("loginOverlay").classList.add("show");
+}
+function closeLogin(){
+  document.getElementById("loginOverlay").classList.remove("show");
+}
+function openDashboard(){
+  document.getElementById("dashboardOverlay").classList.add("show");
+  loadDashboardFields();
+}
+function closeDashboard(){
+  document.getElementById("dashboardOverlay").classList.remove("show");
+}
+async function loadDashboardFields(){
+  const d=await getData();
+  document.getElementById("aboutTitleInput").value=d.aboutTitle||"";
+  document.getElementById("aboutTextInput").value=d.aboutText||"";
+  document.getElementById("shopGroupLink").value=d.enquiry?.shopLink||"";
+  document.getElementById("reikiGroupLink").value=d.enquiry?.reikiLink||"";
+  document.getElementById("wellnessGroupLink").value=d.enquiry?.wellnessLink||"";
+}
+function toggleMenu(){
+  document.getElementById("navbar").classList.toggle("open");
+}
+function closeMenu(){
+  document.getElementById("navbar").classList.remove("open");
+}
+
+document.getElementById("loginForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const email=document.getElementById("loginUser").value.trim();
+  const password=document.getElementById("loginPass").value;
+  const error=document.getElementById("loginError");
+  try{
+    await auth.signInWithEmailAndPassword(email,password);
+    error.style.display="none";
+    closeLogin();
+    openDashboard();
+    e.target.reset();
+  }catch(err){
+    console.error(err);
+    error.textContent="Firebase error: " + (err.code || "unknown") + " — " + (err.message || "Please try again.");
+    error.style.display="block";
+  }
+});
+
+document.getElementById("aboutForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const d=await getData();
+  d.aboutTitle=document.getElementById("aboutTitleInput").value.trim() || "Sarika Bhatnagar";
+  d.aboutText=document.getElementById("aboutTextInput").value.trim();
+  const file=document.getElementById("aboutPhotoInput").files[0];
+  if(file) d.aboutPhoto=await readImage(file);
+  await saveData(d);
+  await renderAll();
+  alert("About information saved online.");
+});
+
+document.getElementById("teachForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const d=await getData();
+  const file=document.getElementById("teachPhoto").files[0];
+  d.teach.push({
+    name:document.getElementById("teachName").value.trim(),
+    description:document.getElementById("teachDescription").value.trim(),
+    photo:file ? await readImage(file) : ""
+  });
+  await saveData(d);
+  e.target.reset();
+  await renderAll();
+  alert("Teaching item added online.");
+});
+
+document.getElementById("classForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const d=await getData();
+  const file=document.getElementById("classPhoto").files[0];
+  d.classes.push({
+    name:document.getElementById("className").value.trim(),
+    description:document.getElementById("classDescription").value.trim(),
+    price:document.getElementById("classPrice").value.trim(),
+    photo:file ? await readImage(file) : ""
+  });
+  await saveData(d);
+  e.target.reset();
+  await renderAll();
+  alert("Class added online.");
+});
+
+document.getElementById("productForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const d=await getData();
+  const file=document.getElementById("productPhoto").files[0];
+  d.products.push({
+    name:document.getElementById("productName").value.trim(),
+    description:document.getElementById("productDescription").value.trim(),
+    price:document.getElementById("productPrice").value.trim(),
+    photo:file ? await readImage(file) : ""
+  });
+  await saveData(d);
+  e.target.reset();
+  await renderAll();
+  alert("Product added online.");
+});
+
+
+document.getElementById("enquiryForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const d=await getData();
+  d.enquiry={
+    shopLink:document.getElementById("shopGroupLink").value.trim(),
+    reikiLink:document.getElementById("reikiGroupLink").value.trim(),
+    wellnessLink:document.getElementById("wellnessGroupLink").value.trim()
+  };
+  await saveData(d);
+  await renderAll();
+  alert("Enquiry group links saved online.");
+});
+
+document.getElementById("galleryForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const file=document.getElementById("galleryPhoto").files[0];
+  if(!file) return;
+  const d=await getData();
+  d.gallery.push({photo:await readImage(file,1200)});
+  await saveData(d);
+  e.target.reset();
+  await renderAll();
+  alert("Gallery photo added online.");
+});
+
+async function deleteTeach(i){
+  const d=await getData(); d.teach.splice(i,1); await saveData(d); await renderAll();
+}
+async function deleteClass(i){
+  const d=await getData(); d.classes.splice(i,1); await saveData(d); await renderAll();
+}
+async function deleteProduct(i){
+  const d=await getData(); d.products.splice(i,1); await saveData(d); await renderAll();
+}
+async function deleteGallery(i){
+  const d=await getData(); d.gallery.splice(i,1); await saveData(d); await renderAll();
+}
+
+async function logoutOwner(){
+  await auth.signOut();
+  closeDashboard();
+}
+
+document.getElementById("appointmentForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const name=document.getElementById("appName").value.trim();
+  const phone=document.getElementById("appPhone").value.trim();
+  const email=document.getElementById("appEmail").value.trim();
+  const service=document.getElementById("appService").value;
+  const date=document.getElementById("appDate").value;
+  const time=document.getElementById("appTime").value;
+  const message=document.getElementById("appMessage").value.trim();
+
+  const whatsappMessage=
+`🌸 *New Appointment Request*
+
+*Name:* ${name}
+*Customer WhatsApp:* ${phone}
+*Email:* ${email || "Not provided"}
+*Service:* ${service}
+*Preferred Date:* ${date}
+*Preferred Time:* ${time}
+
+*Message:*
+${message || "No additional message."}
+
+Please confirm the appointment. Thank you.`;
+
+  const whatsappUrl="https://wa.me/"+whatsappNumber+"?text="+encodeURIComponent(whatsappMessage);
+  window.open(whatsappUrl,"_blank");
+
+  try{
+    await db.collection("appointments").add({
+      name, phone, email, service, date, time, message,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+      status: "new"
+    });
+  }catch(err){
+    console.error("Appointment save failed:", err);
+  }
+});
+
+document.getElementById("year").textContent=new Date().getFullYear();
+auth.onAuthStateChanged(user=>{
+  if(!user){
+    // Keep the public website visible when no owner is signed in.
+    return;
+  }
+});
+renderAll();
+</script>
+</body>
+</html>

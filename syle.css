@@ -1,0 +1,976 @@
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    background: #faf8f2;
+    color: #30372f;
+    line-height: 1.7;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+
+
+/* =========================================================
+   GENERAL
+========================================================= */
+
+.section-container {
+    width: min(1120px, 90%);
+    margin: auto;
+}
+
+.section-label {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: #9b7a45;
+    font-weight: 600;
+    margin-bottom: 14px;
+}
+
+.section-heading {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 55px;
+}
+
+.section-heading h2 {
+    font-size: 42px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #344438;
+    margin-bottom: 15px;
+}
+
+.section-heading p:last-child {
+    color: #6f756e;
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+}
+
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.navbar {
+    width: 100%;
+    background: rgba(250, 248, 242, 0.97);
+    border-bottom: 1px solid #e8e1d3;
+    position: relative;
+    z-index: 10;
+}
+
+.nav-container {
+    width: min(1200px, 92%);
+    margin: auto;
+    min-height: 78px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 30px;
+}
+
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    min-width: 0;
+}
+
+
+
+/* IMPORTANT LOGO BOX */
+
+.logo-image-box {
+    width: 40px !important;
+    height: 40px !important;
+
+    min-width: 40px !important;
+    min-height: 40px !important;
+
+    max-width: 40px !important;
+    max-height: 40px !important;
+
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+}
+
+
+
+.logo-image-box img {
+    width: 40px !important;
+    height: 40px !important;
+
+    min-width: 40px !important;
+    min-height: 40px !important;
+
+    max-width: 40px !important;
+    max-height: 40px !important;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+}
+
+.logo-text strong {
+    font-size: 17px;
+    font-weight: 600;
+    color: #344438;
+    white-space: nowrap;
+}
+
+.logo-text span {
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    color: #9b7a45;
+    margin-top: 4px;
+}
+
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+}
+
+.nav-links a {
+    color: #4d554d;
+    transition: 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: #9b7a45;
+}
+
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+    min-height: 620px;
+
+    display: flex;
+    align-items: center;
+
+    background:
+        linear-gradient(
+            rgba(250, 248, 242, 0.84),
+            rgba(250, 248, 242, 0.91)
+        );
+
+    border-bottom: 1px solid #ebe4d7;
+}
+
+.hero-content {
+    width: min(1120px, 90%);
+    margin: auto;
+    padding: 80px 0;
+}
+
+.small-title {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 4px;
+    color: #9b7a45;
+    margin-bottom: 22px;
+}
+
+.hero h1 {
+    max-width: 760px;
+
+    font-size: clamp(48px, 7vw, 82px);
+    line-height: 1.04;
+    font-weight: 500;
+
+    color: #344438;
+    margin-bottom: 28px;
+}
+
+.hero-description {
+    max-width: 580px;
+
+    font-family: Arial, sans-serif;
+    font-size: 17px;
+
+    color: #6c736c;
+
+    margin-bottom: 35px;
+}
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.btn {
+    display: inline-block;
+
+    padding: 13px 24px;
+
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+
+    border-radius: 2px;
+
+    transition: 0.3s ease;
+}
+
+.primary-btn {
+    background: #526452;
+    color: white;
+}
+
+.primary-btn:hover {
+    background: #3f503f;
+    transform: translateY(-2px);
+}
+
+.secondary-btn {
+    border: 1px solid #b49a6c;
+    color: #6f5935;
+    background: transparent;
+}
+
+.secondary-btn:hover {
+    background: #f1eadc;
+}
+
+
+
+/* =========================================================
+   MASTER SECTION
+========================================================= */
+
+.master-section {
+    padding: 100px 0;
+    background: #fffdf9;
+}
+
+.master-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    align-items: center;
+    gap: 80px;
+}
+
+.master-image {
+    width: 100%;
+}
+
+.master-placeholder {
+    min-height: 420px;
+
+    background: #eee9df;
+
+    border: 1px solid #ded6c7;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}
+
+.placeholder-icon {
+    width: 70px;
+    height: 70px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    border: 1px solid #b49a6c;
+
+    color: #9b7a45;
+
+    font-size: 28px;
+
+    margin-bottom: 20px;
+}
+
+.master-placeholder h3 {
+    font-size: 22px;
+    font-weight: 500;
+    color: #344438;
+}
+
+.master-placeholder p {
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    color: #777;
+    margin-top: 7px;
+}
+
+.master-content h2 {
+    font-size: 50px;
+    font-weight: 500;
+    line-height: 1.15;
+
+    color: #344438;
+
+    margin-bottom: 22px;
+}
+
+.master-content p {
+    font-family: Arial, sans-serif;
+    color: #6d746d;
+    font-size: 15px;
+    margin-bottom: 18px;
+}
+
+.text-link {
+    display: inline-block;
+
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+
+    color: #8c6d3e;
+
+    margin-top: 10px;
+}
+
+.text-link:hover {
+    color: #526452;
+}
+
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.intro-section {
+    padding: 100px 0;
+    background: #f3f0e8;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.feature-card {
+    padding: 35px 30px;
+
+    background: #fffdf9;
+
+    border: 1px solid #e3ddd0;
+
+    text-align: center;
+}
+
+.feature-icon {
+    font-size: 32px;
+    color: #9b7a45;
+    margin-bottom: 15px;
+}
+
+.feature-card h3 {
+    font-size: 23px;
+    font-weight: 500;
+
+    color: #344438;
+
+    margin-bottom: 12px;
+}
+
+.feature-card p {
+    font-family: Arial, sans-serif;
+    color: #71776f;
+    font-size: 14px;
+}
+
+
+
+/* =========================================================
+   ABOUT PREVIEW
+========================================================= */
+
+.about-preview {
+    padding: 100px 0;
+
+    background: #fffdf9;
+}
+
+.about-preview-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 90px;
+    align-items: start;
+}
+
+.about-preview h2 {
+    font-size: 46px;
+    font-weight: 500;
+    line-height: 1.15;
+    color: #344438;
+}
+
+.about-preview p {
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    color: #6e746d;
+    margin-bottom: 18px;
+}
+
+
+
+/* =========================================================
+   SERVICES
+========================================================= */
+
+.services-section {
+    padding: 100px 0;
+
+    background: #f5f2eb;
+}
+
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.service-card {
+    background: #fffdf9;
+    border: 1px solid #e1dacd;
+
+    padding: 38px 32px;
+
+    min-height: 290px;
+
+    transition: 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 35px rgba(60, 55, 40, 0.07);
+}
+
+.service-number {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #a08351;
+}
+
+.service-card h3 {
+    font-size: 26px;
+    font-weight: 500;
+
+    color: #344438;
+
+    margin: 35px 0 14px;
+}
+
+.service-card p {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #727870;
+
+    margin-bottom: 25px;
+}
+
+.service-card a {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    color: #8d6d3e;
+}
+
+
+
+/* =========================================================
+   APPOINTMENT
+========================================================= */
+
+.appointment-banner {
+    padding: 100px 20px;
+
+    background: #465747;
+
+    text-align: center;
+
+    color: white;
+}
+
+.appointment-content {
+    max-width: 700px;
+    margin: auto;
+}
+
+.appointment-content .section-label {
+    color: #d4bc8e;
+}
+
+.appointment-content h2 {
+    font-size: 48px;
+    line-height: 1.15;
+    font-weight: 500;
+
+    margin-bottom: 18px;
+}
+
+.appointment-content p {
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+
+    color: #e2e5df;
+
+    margin-bottom: 30px;
+}
+
+
+
+/* =========================================================
+   SHOP
+========================================================= */
+
+.shop-preview {
+    padding: 100px 0;
+
+    background: #fffdf9;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.product-card {
+    border: 1px solid #e2dccf;
+    background: #faf8f2;
+}
+
+.product-placeholder {
+    height: 240px;
+
+    background: #ebe6da;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+
+    color: #9b8d76;
+}
+
+.product-card h3 {
+    padding: 20px 20px 5px;
+
+    font-size: 21px;
+    font-weight: 500;
+
+    color: #344438;
+}
+
+.product-card p {
+    padding: 0 20px 20px;
+
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+
+    color: #777;
+}
+
+.center-button {
+    text-align: center;
+    margin-top: 45px;
+}
+
+
+
+/* =========================================================
+   REVIEWS
+========================================================= */
+
+.reviews-section {
+    padding: 100px 0;
+
+    background: #f3f0e8;
+}
+
+.review-placeholder {
+    max-width: 720px;
+
+    margin: auto;
+
+    padding: 55px 40px;
+
+    text-align: center;
+
+    background: #fffdf9;
+
+    border: 1px solid #e1dacd;
+}
+
+.quote-mark {
+    font-size: 60px;
+    color: #b49a6c;
+    line-height: 0.7;
+    margin-bottom: 25px;
+}
+
+.review-placeholder p {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    color: #686f67;
+    margin-bottom: 15px;
+}
+
+.review-placeholder span {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #9b7a45;
+}
+
+
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.contact-section {
+    padding: 100px 0;
+
+    background: #fffdf9;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+}
+
+.contact-grid h2 {
+    font-size: 48px;
+    font-weight: 500;
+
+    color: #344438;
+
+    margin-bottom: 20px;
+}
+
+.contact-grid > div:first-child p:last-child {
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    color: #70766f;
+    max-width: 500px;
+}
+
+.contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.contact-item {
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e3ddd1;
+}
+
+.contact-item span {
+    display: block;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 11px;
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    color: #9b7a45;
+
+    margin-bottom: 5px;
+}
+
+.contact-item a,
+.contact-item p {
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+
+    color: #4e594e;
+}
+
+.contact-item a:hover {
+    color: #9b7a45;
+}
+
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+    background: #303a31;
+
+    color: white;
+
+    padding: 45px 0 25px;
+}
+
+.footer-container {
+    width: min(1120px, 90%);
+    margin: auto;
+}
+
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-bottom: 30px;
+}
+
+
+
+/* IMPORTANT FOOTER LOGO */
+
+.footer-logo-box {
+    width: 35px !important;
+    height: 35px !important;
+
+    min-width: 35px !important;
+    min-height: 35px !important;
+
+    max-width: 35px !important;
+    max-height: 35px !important;
+
+    overflow: hidden;
+
+    border-radius: 50%;
+}
+
+.footer-logo-box img {
+    width: 35px !important;
+    height: 35px !important;
+
+    min-width: 35px !important;
+    min-height: 35px !important;
+
+    max-width: 35px !important;
+    max-height: 35px !important;
+
+    object-fit: cover;
+}
+
+.footer-brand strong {
+    display: block;
+
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.footer-brand span {
+    display: block;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+    letter-spacing: 1.5px;
+
+    color: #d2b77f;
+    margin-top: 3px;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    padding-bottom: 25px;
+
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+
+.footer-links a {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+
+    color: #d8ddd6;
+}
+
+.footer-links a:hover {
+    color: #d2b77f;
+}
+
+.footer-bottom {
+    padding-top: 22px;
+}
+
+.footer-bottom p {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    color: #aeb5ad;
+}
+
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .nav-container {
+        flex-direction: column;
+        padding: 18px 0;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .hero {
+        min-height: 540px;
+    }
+
+    .master-grid,
+    .about-preview-grid,
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .feature-grid,
+    .service-grid,
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .master-content h2,
+    .about-preview h2,
+    .contact-grid h2 {
+        font-size: 38px;
+    }
+
+    .section-heading h2 {
+        font-size: 36px;
+    }
+
+    .appointment-content h2 {
+        font-size: 38px;
+    }
+}
+
+
+
+@media (max-width: 600px) {
+
+    .hero-content {
+        padding: 60px 0;
+    }
+
+    .hero h1 {
+        font-size: 46px;
+    }
+
+    .hero-description {
+        font-size: 15px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .master-section,
+    .intro-section,
+    .about-preview,
+    .services-section,
+    .shop-preview,
+    .reviews-section,
+    .contact-section {
+        padding: 70px 0;
+    }
+
+    .master-placeholder {
+        min-height: 330px;
+    }
+
+    .feature-card,
+    .service-card {
+        padding: 30px 25px;
+    }
+
+    .footer-links {
+        gap: 14px;
+    }
+
+}
