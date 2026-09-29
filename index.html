@@ -198,13 +198,6 @@ footer{padding:30px 0;text-align:center;color:var(--muted);border-top:1px solid 
   .dashboard-back-button{align-self:flex-start}
   .admin-box.full{grid-column:auto}
 }
-
-.enquiry-card .card-body{text-align:center}
-.enquiry-icon{font-size:38px;margin-bottom:8px}
-.enquiry-card .button.disabled{
-  opacity:.55;cursor:not-allowed;pointer-events:none;
-}
-
 </style>
 </head>
 <body>
@@ -223,8 +216,8 @@ footer{padding:30px 0;text-align:center;color:var(--muted);border-top:1px solid 
       <a href="#gallery" onclick="closeMenu()">Gallery</a>
       <a href="#appointment" onclick="closeMenu()">Appointment</a>
       <a href="#shop" onclick="closeMenu()">Shop</a>
-      <a href="#enquiry" onclick="closeMenu()">Enquiry</a>
       <a href="#contact" onclick="closeMenu()">Contact</a>
+      <a href="#feedback" onclick="closeMenu()">Feedback</a>
       <button class="nav-button" onclick="openLogin()">Owner Login</button>
     </nav>
   </div>
@@ -355,13 +348,45 @@ footer{padding:30px 0;text-align:center;color:var(--muted);border-top:1px solid 
 </section>
 
 
-<section id="enquiry">
+<section id="feedback">
   <div class="container">
     <div class="section-head">
-      <h2>Enquiry</h2>
-      <p>Join the WhatsApp group related to your enquiry.</p>
+      <h2>Feedback</h2>
+      <p>Share your experience with Sarika Reiki & Wellness.</p>
     </div>
-    <div id="enquiryList" class="cards"></div>
+    <div class="appointment-wrap">
+      <form id="feedbackForm" class="form-grid">
+        <div class="field">
+          <label>Your Name *</label>
+          <input id="feedbackName" required>
+        </div>
+        <div class="field">
+          <label>Rating *</label>
+          <select id="feedbackRating" required>
+            <option value="">Select rating</option>
+            <option value="5">★★★★★ — Excellent</option>
+            <option value="4">★★★★☆ — Very Good</option>
+            <option value="3">★★★☆☆ — Good</option>
+            <option value="2">★★☆☆☆ — Fair</option>
+            <option value="1">★☆☆☆☆ — Needs Improvement</option>
+          </select>
+        </div>
+        <div class="field" style="grid-column:1/-1;">
+          <label>Your Feedback *</label>
+          <textarea id="feedbackText" rows="5" required placeholder="Write your feedback here..."></textarea>
+        </div>
+        <div style="grid-column:1/-1;">
+          <button class="button gold" type="submit">Submit Feedback</button>
+        </div>
+      </form>
+    </div>
+    <div style="margin-top:40px;">
+      <div class="section-head">
+        <h3>What People Say</h3>
+        <p>Approved feedback is displayed here.</p>
+      </div>
+      <div id="publicFeedbackList" class="cards"></div>
+    </div>
   </div>
 </section>
 
@@ -467,23 +492,6 @@ footer{padding:30px 0;text-align:center;color:var(--muted);border-top:1px solid 
         <div id="productAdminList" class="admin-list"></div>
       </div>
 
-
-      <div class="admin-box full">
-        <h3>Enquiry / WhatsApp Groups</h3>
-        <p class="hint" style="margin-bottom:12px;">
-          Paste the WhatsApp invitation link for each group. These links will appear on the public Enquiry section.
-        </p>
-        <form id="enquiryForm" class="admin-form">
-          <input id="shopGroupLink" type="url" placeholder="Shop & Products WhatsApp group link">
-          <input id="reikiGroupLink" type="url" placeholder="Reiki Classes WhatsApp group link">
-          <input id="wellnessGroupLink" type="url" placeholder="Healing & Wellness WhatsApp group link">
-          <button class="button" type="submit">Save Enquiry Group Links</button>
-        </form>
-        <div class="hint" style="margin-top:10px;">
-          Example: https://chat.whatsapp.com/...
-        </div>
-      </div>
-
       <div class="admin-box full">
         <h3>Gallery</h3>
         <form id="galleryForm" class="admin-form">
@@ -492,6 +500,12 @@ footer{padding:30px 0;text-align:center;color:var(--muted);border-top:1px solid 
           <button class="button" type="submit">Add Gallery Photo</button>
         </form>
         <div id="galleryAdminList" class="admin-list"></div>
+      </div>
+
+      <div class="admin-box full">
+        <h3>Feedback Approval</h3>
+        <p class="hint">Review customer feedback here. Only approved feedback is shown publicly on the website.</p>
+        <div id="feedbackAdminList" class="admin-list"></div>
       </div>
 
     </div>
@@ -526,11 +540,7 @@ const defaultData = {
   classes: [],
   products: [],
   gallery: [],
-  enquiry: {
-    shopLink: "",
-    reikiLink: "",
-    wellnessLink: ""
-  }
+  feedback: []
 };
 
 async function getData(){
@@ -545,10 +555,7 @@ async function getData(){
         classes: Array.isArray(saved.classes) ? saved.classes : [],
         products: Array.isArray(saved.products) ? saved.products : [],
         gallery: Array.isArray(saved.gallery) ? saved.gallery : [],
-        enquiry: {
-          ...defaultData.enquiry,
-          ...(saved.enquiry || {})
-        }
+        feedback: Array.isArray(saved.feedback) ? saved.feedback : []
       };
     }
 
@@ -562,10 +569,7 @@ async function getData(){
         classes: Array.isArray(localSaved.classes) ? localSaved.classes : [],
         products: Array.isArray(localSaved.products) ? localSaved.products : [],
         gallery: Array.isArray(localSaved.gallery) ? localSaved.gallery : [],
-        enquiry: {
-          ...defaultData.enquiry,
-          ...(localSaved.enquiry || {})
-        }
+          feedback: Array.isArray(localSaved.feedback) ? localSaved.feedback : []
       };
       await db.collection("website").doc("content").set(migrated);
       return migrated;
@@ -583,10 +587,7 @@ async function getData(){
           classes: Array.isArray(saved.classes) ? saved.classes : [],
           products: Array.isArray(saved.products) ? saved.products : [],
           gallery: Array.isArray(saved.gallery) ? saved.gallery : [],
-          enquiry: {
-            ...defaultData.enquiry,
-            ...(saved.enquiry || {})
-          }
+        feedback: Array.isArray(saved.feedback) ? saved.feedback : []
         };
       }
     }catch(_){}
@@ -604,6 +605,68 @@ async function saveData(data){
     localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
     alert("The website saved on this device, but Firebase could not save it online. Please check your Firebase connection/rules.");
     return false;
+  }
+}
+
+
+async function submitFeedback(event){
+  event.preventDefault();
+
+  const name = document.getElementById("feedbackName").value.trim();
+  const rating = Number(document.getElementById("feedbackRating").value);
+  const text = document.getElementById("feedbackText").value.trim();
+
+  if(!name || !rating || !text){
+    alert("Please complete all required feedback fields.");
+    return;
+  }
+
+  try{
+    await db.collection("feedback").add({
+      name: name,
+      rating: rating,
+      text: text,
+      approved: false,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp()
+    });
+
+    document.getElementById("feedbackForm").reset();
+    alert("Thank you for your feedback. It will appear after approval.");
+  }catch(e){
+    console.error("Feedback submission failed:", e);
+    alert("Your feedback could not be submitted right now. Please try again.");
+  }
+}
+
+async function loadPublicFeedback(){
+  const box = document.getElementById("publicFeedbackList");
+  if(!box) return;
+
+  try{
+    const snap = await db.collection("feedback")
+      .where("approved", "==", true)
+      .get();
+
+    if(snap.empty){
+      box.innerHTML = '<div class="card"><p>No approved feedback has been published yet.</p></div>';
+      return;
+    }
+
+    const items = [];
+    snap.forEach(doc => items.push(doc.data()));
+
+    box.innerHTML = items.map(item => {
+      const rating = Math.max(1, Math.min(5, Number(item.rating) || 5));
+      const stars = "★".repeat(rating) + "☆".repeat(5-rating);
+      return '<div class="card">' +
+        '<div style="font-size:1.15rem;letter-spacing:2px;">' + stars + '</div>' +
+        '<h3>' + escapeHTML(item.name) + '</h3>' +
+        '<p>' + escapeHTML(item.text) + '</p>' +
+        '</div>';
+    }).join("");
+  }catch(e){
+    console.error("Public feedback load failed:", e);
+    box.innerHTML = '<div class="card"><p>Feedback will appear here after approval.</p></div>';
   }
 }
 
@@ -654,7 +717,6 @@ async function renderAll(){
   renderTeach(data);
   renderClasses(data);
   renderProducts(data);
-  renderEnquiry(data);
   renderGallery(data);
   renderAdminLists(data);
   updateServiceOptions(data);
@@ -717,46 +779,11 @@ function renderProducts(data){
         <h3>${escapeHTML(item.name)}</h3>
         <p>${escapeHTML(item.description)}</p>
         ${item.price ? `<div class="price">${escapeHTML(item.price)}</div>` : ""}
-        <!-- Product enquiries are handled through the Shop & Products WhatsApp group in the Enquiry section. -->
-      </div>
-    </article>
-  `).join("");
-}
-
-
-function renderEnquiry(data){
-  const box=document.getElementById("enquiryList");
-  const groups=[
-    {
-      icon:"💎",
-      name:"Shop & Products",
-      description:"Ask about crystals, stones, availability, prices and orders.",
-      link:data.enquiry?.shopLink || ""
-    },
-    {
-      icon:"🌿",
-      name:"Reiki Classes",
-      description:"Ask about Reiki classes, courses, timings and learning.",
-      link:data.enquiry?.reikiLink || ""
-    },
-    {
-      icon:"✨",
-      name:"Healing & Wellness",
-      description:"Ask about healing sessions and wellness services.",
-      link:data.enquiry?.wellnessLink || ""
-    }
-  ];
-
-  box.innerHTML=groups.map(group=>`
-    <article class="card enquiry-card">
-      <div class="card-body">
-        <div class="enquiry-icon">${group.icon}</div>
-        <h3>${escapeHTML(group.name)}</h3>
-        <p>${escapeHTML(group.description)}</p>
         <div class="card-actions">
-          ${group.link
-            ? `<a class="button" href="${escapeHTML(group.link)}" target="_blank" rel="noopener">Join WhatsApp Group</a>`
-            : `<span class="button disabled">Link Coming Soon</span>`}
+          <a class="button" target="_blank"
+             href="https://wa.me/${whatsappNumber}?text=${encodeURIComponent("Hello Sarika, I would like to enquire about: "+item.name)}">
+             Enquire
+          </a>
         </div>
       </div>
     </article>
@@ -815,6 +842,77 @@ function renderAdminLists(data){
       <button class="delete-btn" onclick="deleteGallery(${i})">Delete</button>
     </div>
   `).join("") : `<div class="hint">No gallery photos added yet.</div>`;
+
+  loadAdminFeedback();
+}
+
+async function loadAdminFeedback(){
+  const box=document.getElementById("feedbackAdminList");
+  if(!box) return;
+
+  try{
+    const snap=await db.collection("feedback").get();
+    if(snap.empty){
+      box.innerHTML='<div class="hint">No feedback submitted yet.</div>';
+      return;
+    }
+
+    const items=[];
+    snap.forEach(doc=>items.push({id:doc.id,...doc.data()}));
+    items.sort((a,b)=>{
+      const aTime=a.createdAt && a.createdAt.toMillis ? a.createdAt.toMillis() : 0;
+      const bTime=b.createdAt && b.createdAt.toMillis ? b.createdAt.toMillis() : 0;
+      return bTime-aTime;
+    });
+
+    box.innerHTML=items.map(item=>{
+      const rating=Math.max(1,Math.min(5,Number(item.rating)||5));
+      const stars="★".repeat(rating)+"☆".repeat(5-rating);
+      const approved=item.approved===true;
+      return `<div class="admin-item" style="align-items:flex-start">
+        <div style="flex:1">
+          <div style="font-size:1.05rem;letter-spacing:2px">${stars}</div>
+          <div class="admin-item-title">${escapeHTML(item.name || "Anonymous")}</div>
+          <div class="hint" style="margin-top:6px">${escapeHTML(item.text || "")}</div>
+          <div class="hint" style="margin-top:6px">Status: ${approved ? "Approved" : "Pending approval"}</div>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end">
+          ${approved
+            ? `<button class="button outline-button" type="button" onclick="setFeedbackApproval('${item.id}',false)">Hide</button>`
+            : `<button class="button" type="button" onclick="setFeedbackApproval('${item.id}',true)">Approve</button>`}
+          <button class="delete-btn" type="button" onclick="deleteFeedback('${item.id}')">Delete</button>
+        </div>
+      </div>`;
+    }).join("");
+  }catch(e){
+    console.error("Admin feedback load failed:",e);
+    box.innerHTML='<div class="hint">Feedback could not be loaded. Check Firebase rules.</div>';
+  }
+}
+
+async function setFeedbackApproval(id, approved){
+  try{
+    await db.collection("feedback").doc(id).update({approved: approved});
+    await loadAdminFeedback();
+    await loadPublicFeedback();
+    alert(approved ? "Feedback approved and published." : "Feedback hidden from the public website.");
+  }catch(e){
+    console.error("Feedback approval failed:",e);
+    alert("Could not update this feedback. Please check Firebase rules.");
+  }
+}
+
+async function deleteFeedback(id){
+  if(!confirm("Delete this feedback permanently?")) return;
+  try{
+    await db.collection("feedback").doc(id).delete();
+    await loadAdminFeedback();
+    await loadPublicFeedback();
+    alert("Feedback deleted.");
+  }catch(e){
+    console.error("Feedback delete failed:",e);
+    alert("Could not delete this feedback. Please check Firebase rules.");
+  }
 }
 
 function updateServiceOptions(data){
@@ -846,9 +944,6 @@ async function loadDashboardFields(){
   const d=await getData();
   document.getElementById("aboutTitleInput").value=d.aboutTitle||"";
   document.getElementById("aboutTextInput").value=d.aboutText||"";
-  document.getElementById("shopGroupLink").value=d.enquiry?.shopLink||"";
-  document.getElementById("reikiGroupLink").value=d.enquiry?.reikiLink||"";
-  document.getElementById("wellnessGroupLink").value=d.enquiry?.wellnessLink||"";
 }
 function toggleMenu(){
   document.getElementById("navbar").classList.toggle("open");
@@ -934,20 +1029,6 @@ document.getElementById("productForm").addEventListener("submit",async e=>{
   alert("Product added online.");
 });
 
-
-document.getElementById("enquiryForm").addEventListener("submit",async e=>{
-  e.preventDefault();
-  const d=await getData();
-  d.enquiry={
-    shopLink:document.getElementById("shopGroupLink").value.trim(),
-    reikiLink:document.getElementById("reikiGroupLink").value.trim(),
-    wellnessLink:document.getElementById("wellnessGroupLink").value.trim()
-  };
-  await saveData(d);
-  await renderAll();
-  alert("Enquiry group links saved online.");
-});
-
 document.getElementById("galleryForm").addEventListener("submit",async e=>{
   e.preventDefault();
   const file=document.getElementById("galleryPhoto").files[0];
@@ -1028,3 +1109,10 @@ renderAll();
 </script>
 </body>
 </html>
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+  const feedbackForm = document.getElementById("feedbackForm");
+  if(feedbackForm) feedbackForm.addEventListener("submit", submitFeedback);
+  loadPublicFeedback();
+});
+</script>
